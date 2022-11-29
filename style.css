@@ -70,75 +70,11 @@ header > * {
 	background-color: blueviolet;
 }
 
-/* hide nav when sub-nav opens to avoid tab/screenreaders */
-.nav-items.is--hidden {
-	visibility: hidden;
-	transition: transform 0.5s, visibility 0s 0.6s;
-}
-
-.nav-item:not(.has--sub-nav),
-.sub-nav-btn,
-.sub-nav-item a {
+.nav-item {
 	padding: 1rem;
 	color: #fff;
 	border: 1px solid #000;
 	background-color: transparent;
 	width: 100%;
 	text-align: left;
-}
-
-.sub-nav-item a {
-	display: inline-block;
-}
-
-.sub-nav-btn_open::after {
-	font-family: "Font Awesome 5 Free";
-	font-weight: 600;
-	content: "\f178";
-}
-.sub-nav-btn_close::before {
-	font-family: "Font Awesome 5 Free";
-	font-weight: 600;
-	content: "\f177";
-}
-
-.sub-nav-btn {
-	display: flex;
-	justify-content: space-between;
-}
-
-.sub-nav-items {
-	width: 100%;
-	height: 250px;
-	background-color: tomato;
-
-	position: absolute;
-	top: 0;
-	left: 0;
-	transform: translateX(0);
-
-	/* overide visibility hidden from nav-items */
-	visibility: visible;
-
-	transition: transform 0.5s;
-}
-
-.sub-nav-items.is--hidden {
-	transform: translateX(100%);
-
-	visibility: hidden;
-	/* waits for slide to end before hidding */
-	transition: transform 0.5s, visibility 0s 0.6s;
-}
-
-#nav.is--hidden .sub-nav-items:not(.is--hidden) {
-	visibility: hidden;
-	transition: visibility 0s 0.6s;
-}
-
-.sub-nav-items.is--hidden.is--open {
-	transform: translateX(0);
-
-	visibility: hidden;
-	transition: transform 0.5s, visibility 0s 0.6s;
 }
