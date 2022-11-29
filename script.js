@@ -4,21 +4,30 @@ const navItems = document.querySelector(".nav-items");
 const subNavOpenBtns = document.querySelectorAll(".sub-nav-btn_open");
 const subNavCloseBtns = document.querySelectorAll(".sub-nav-btn_close");
 
+let resetNavState = false;
+
 navBtn.addEventListener("click", function () {
-	nav.classList.toggle("is--hidden");
-
 	if (nav.classList.contains("is--hidden")) {
-		navItems.classList.remove("is--hidden");
+		nav.classList.remove("is--hidden");
+		return;
+	}
 
-		const openedSubNav = document.querySelector(".is--open");
-		if (openedSubNav) {
-			console.log(openedSubNav);
+	if (!nav.classList.contains("is--hidden")) {
+		nav.classList.add("is--hidden");
 
-			openedSubNav.classList.add("is--hidden");
+		const subNavIsOpen = document.querySelector(".is--open");
+		if (subNavIsOpen) {
+			// reset opened sub nav to it default position
+			if (resetNavState) subNavIsOpen.classList.add("is--hidden");
 
 			setTimeout(function () {
-				openedSubNav.classList.remove("is--open");
+				subNavIsOpen.classList.remove("is--open");
 			}, 600);
+			/////////////////
+		}
+
+		if (!subNavIsOpen || resetNavState) {
+			navItems.classList.remove("is--hidden");
 		}
 	}
 });

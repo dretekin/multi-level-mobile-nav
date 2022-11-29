@@ -131,6 +131,11 @@ header > * {
 	transition: transform 0.5s, visibility 0s 0.6s;
 }
 
+#nav.is--hidden .sub-nav-items:not(.is--hidden) {
+	visibility: hidden;
+	transition: visibility 0s 0.6s;
+}
+
 .sub-nav-items.is--hidden.is--open {
 	transform: translateX(0);
 
