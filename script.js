@@ -1,62 +1,46 @@
-const easing = BezierEasing(0.42, 0, 0.58, 1);
+const navBtn = document.querySelector(".nav-btn");
+const nav = document.getElementById("nav");
+const navItems = document.querySelector(".nav-items");
+const subNavBtnOpen = document.querySelector(".sub-nav-btn_open");
+const subNavBtnClose = document.querySelector(".sub-nav-btn_close");
 
-const container = document.querySelector(".container");
-const box = document.querySelector(".box");
+navBtn.addEventListener("click", function () {
+	nav.classList.toggle("is--hidden");
 
-let distance =
-		container.getBoundingClientRect().width - box.getBoundingClientRect().width,
-	start,
-	runtime,
-	relDistProg = 0,
-	duration = 1000,
-	count = 0,
-	direction = 0;
+	if (nav.classList.contains("is--hidden")) {
+		navItems.classList.remove("is--hidden");
 
-function forward(timestamp) {
-	if (!start) {
-		start = timestamp;
+		const openedSubNav = document.querySelector(".is--open");
+		if (openedSubNav) {
+			console.log(openedSubNav);
+
+			openedSubNav.classList.add("is--hidden");
+
+			setTimeout(function () {
+				openedSubNav.classList.remove("is--open");
+			}, 600);
+		}
 	}
+});
 
-	runtime = timestamp - start;
+subNavBtnOpen.addEventListener("click", openSubNav);
+function openSubNav() {
+	const subNav = this.nextElementSibling;
 
-	let relTimeProg = runtime / duration;
+	subNav.classList.toggle("is--hidden");
 
-	let relEaseProg = easing(relTimeProg);
+	navItems.classList.toggle("is--hidden");
 
-	relDistProg = distance * Math.min(relEaseProg, 1);
-
-	box.style.transform = `translateX(${relDistProg}px)`;
-
-	if (runtime < duration) {
-		requestAnimationFrame(forward);
-	} else {
-		start = undefined;
-		requestAnimationFrame(reverse);
-	}
+	subNav.classList.add("is--open");
 }
 
-function reverse(timestamp) {
-	if (!start) {
-		start = timestamp;
-	}
+subNavBtnClose.addEventListener("click", closeSubNav);
+function closeSubNav() {
+	const subNav = this.parentElement;
 
-	runtime = timestamp - start;
+	subNav.classList.toggle("is--hidden");
 
-	let relTimeProg = runtime / duration;
+	navItems.classList.toggle("is--hidden");
 
-	let relEaseProg = easing(relTimeProg);
-
-	relDistProg = distance - distance * Math.min(relEaseProg, 1);
-
-	box.style.transform = `translateX(${relDistProg}px)`;
-
-	if (runtime < duration) {
-		requestAnimationFrame(reverse);
-	} else {
-		start = undefined;
-
-		requestAnimationFrame(forward);
-	}
+	subNav.classList.remove("is--open");
 }
-
-requestAnimationFrame(forward);
