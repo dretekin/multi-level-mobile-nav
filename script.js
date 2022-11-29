@@ -1,8 +1,8 @@
 const navBtn = document.querySelector(".nav-btn");
 const nav = document.getElementById("nav");
 const navItems = document.querySelector(".nav-items");
-const subNavBtnOpen = document.querySelector(".sub-nav-btn_open");
-const subNavBtnClose = document.querySelector(".sub-nav-btn_close");
+const subNavOpenBtns = document.querySelectorAll(".sub-nav-btn_open");
+const subNavCloseBtns = document.querySelectorAll(".sub-nav-btn_close");
 
 navBtn.addEventListener("click", function () {
 	nav.classList.toggle("is--hidden");
@@ -23,7 +23,10 @@ navBtn.addEventListener("click", function () {
 	}
 });
 
-subNavBtnOpen.addEventListener("click", openSubNav);
+subNavOpenBtns.forEach(function (subNavOpenBtn) {
+	subNavOpenBtn.addEventListener("click", openSubNav);
+});
+
 function openSubNav() {
 	const subNav = this.nextElementSibling;
 
@@ -34,7 +37,10 @@ function openSubNav() {
 	subNav.classList.add("is--open");
 }
 
-subNavBtnClose.addEventListener("click", closeSubNav);
+subNavCloseBtns.forEach(function (subNavCloseBtn) {
+	subNavCloseBtn.addEventListener("click", closeSubNav);
+});
+
 function closeSubNav() {
 	const subNav = this.parentElement;
 

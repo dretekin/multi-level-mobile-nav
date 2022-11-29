@@ -78,13 +78,17 @@ header > * {
 
 .nav-item:not(.has--sub-nav),
 .sub-nav-btn,
-.sub-nav-item {
+.sub-nav-item a {
 	padding: 1rem;
 	color: #fff;
 	border: 1px solid #000;
 	background-color: transparent;
 	width: 100%;
 	text-align: left;
+}
+
+.sub-nav-item a {
+	display: inline-block;
 }
 
 .sub-nav-btn_open::after {
