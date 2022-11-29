@@ -30,9 +30,9 @@ subNavOpenBtns.forEach(function (subNavOpenBtn) {
 function openSubNav() {
 	const subNav = this.nextElementSibling;
 
-	subNav.classList.toggle("is--hidden");
+	subNav.classList.remove("is--hidden");
 
-	navItems.classList.toggle("is--hidden");
+	navItems.classList.add("is--hidden");
 
 	subNav.classList.add("is--open");
 }
@@ -44,9 +44,9 @@ subNavCloseBtns.forEach(function (subNavCloseBtn) {
 function closeSubNav() {
 	const subNav = this.parentElement;
 
-	subNav.classList.toggle("is--hidden");
+	subNav.classList.add("is--hidden");
 
-	navItems.classList.toggle("is--hidden");
+	navItems.classList.remove("is--hidden");
 
 	subNav.classList.remove("is--open");
 }
