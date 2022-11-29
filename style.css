@@ -123,6 +123,11 @@ header > * {
 	transition: transform 0.5s;
 }
 
+.sub-nav-items .sub-nav-items {
+	background-color: slategray;
+	height: 230px;
+}
+
 .sub-nav-items.is--hidden {
 	transform: translateX(100%);
 
